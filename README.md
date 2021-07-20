@@ -14,7 +14,7 @@
 
 ###Asociation
 - has_many :items
-- has_many :buy_data
+- has_many :buy_record
 
 ## itemsテーブル
 | column               | type       | options                        |
@@ -26,14 +26,15 @@
 | postage_id           | integer    | null: false                    |
 | delivery_area_id     | integer    | null: false                    |
 | preparation_days_id  | integer    | null: false                    |
+| price                | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 
 ###Asociation
 - belongs_to :user
-- has_one    :buy_data
+- has_one    :buy_record
 
 
-## buy_dataテーブル
+## buy_recordsテーブル
 | column               | type       | options                        |
 |:--------------------:|:----------:|:------------------------------:|
 | item                 | references | null: false, foreign_key: true |
@@ -54,7 +55,7 @@
 | address_line         | string     | null: false                    |
 | building_name        | string     |                                |
 | phone_number         | string     | null: false                    |
-| buy_data             | references | null: false, foreign_key: true |
+| buy_record           | references | null: false, foreign_key: true |
 
 ###Asociation
-- belongs_to :buy_data
+- belongs_to :buy_records
