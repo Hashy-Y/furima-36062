@@ -14,7 +14,7 @@
 
 ###Asociation
 - has_many :items
-- has_many :buy_record
+- has_many :buy_records
 
 ## itemsテーブル
 | column               | type       | options                        |
@@ -46,7 +46,7 @@
 - has_one    :delivery_address
 
 
-## delivery_addressテーブル
+## delivery_addressesテーブル
 | column               | type       | options                        |
 |:--------------------:|:----------:|:------------------------------:|
 | postal_code          | string     | null: false                    |
@@ -58,4 +58,4 @@
 | buy_record           | references | null: false, foreign_key: true |
 
 ###Asociation
-- belongs_to :buy_records
+- belongs_to :buy_record
