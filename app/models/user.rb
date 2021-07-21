@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, uniqueness: true
-  PASSWORD_REGIX = /\A[a-z\d]{6,100}+\z/i
-  validates :password, format: { with: PASSWORD_REGIX, allow_blank: true}
-  validates :password_confirmation, format: { with: PASSWORD_REGIX, allow_blank: true}
+  PASSWORD_REGIX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i
+  validates :password, format: { with: PASSWORD_REGIX}, allow_blank: true
+  validates :password_confirmation, format: { with: PASSWORD_REGIX }, allow_blank: true
   NAME_REGIX = /\A[ぁ-んァ-ン一-龥]/
   validates :first_name, presence: true, format: { with: NAME_REGIX, allow_blank: true }
   validates :last_name, presence: true, format: { with: NAME_REGIX, allow_blank: true }
