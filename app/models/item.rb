@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 
   belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
     validates :item_name
@@ -14,4 +15,11 @@ class Item < ApplicationRecord
       validates :delivery_period_id, numericality: { other_than: 1 , message: "can't be blank" }
     end
   end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:image).merge(user_id: current_user.id)
+  end
+
 end
