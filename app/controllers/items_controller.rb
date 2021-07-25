@@ -27,7 +27,8 @@ class ItemsController < ApplicationController
       :postage_id,
       :delivery_area_id,
       :delivery_period_id,
-      :price
+      :price,
+      :image
     ).merge(user_id: current_user.id)
   end
 
