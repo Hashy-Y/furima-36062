@@ -6,14 +6,14 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :description
-    validates :price
+    validates :image
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ }
     with_options numericality: { other_than: 1 , message: "can't be blank" } do
-      validates :category_id, numericality: { other_than: 1 , message: "can't be blank" } 
-      validates :condition_id, numericality: { other_than: 1 , message: "can't be blank" } 
-      validates :postage_id, numericality: { other_than: 1 , message: "can't be blank" }
-      validates :delivery_area_id, numericality: { other_than: 1 , message: "can't be blank" }
-      validates :delivery_period_id, numericality: { other_than: 1 , message: "can't be blank" }
+      validates :category_id
+      validates :condition_id 
+      validates :postage_id
+      validates :delivery_area_id
+      validates :delivery_period_id
     end
   end
-
 end
