@@ -9,10 +9,6 @@ class BuyRecordsController < ApplicationController
     end
   end
 
-  def new
-    
-  end
-
   def create
     @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new(buy_record_params)

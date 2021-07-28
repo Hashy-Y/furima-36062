@@ -8,7 +8,9 @@ class BuyAddress
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :address_line
     validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
-    validates :token, presence: true
+    validates :token
+    validates :user_id
+    validates :item_id 
   end
   
  

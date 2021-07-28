@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe BuyAddress, type: :model do
   describe '購入情報の保存' do
     before do
-      user = FactoryBot.build(:user)
-      item = FactoryBot.build(:item)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
       @buy_address = FactoryBot.build(:buy_address, user_id: user.id, item_id: item.id)
+      sleep 0.0001
     end
 
     context '内容に問題ない場合' do
@@ -34,7 +35,7 @@ RSpec.describe BuyAddress, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @buy_address.postal_code = '1234567'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@buy_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
 
       it 'postal_codeが全角では保存できないこと' do
@@ -77,6 +78,18 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.token = ''
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空だと保存できないこと' do
+        @buy_address.user_id = ''
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと保存できないこと' do
+        @buy_address.item_id = ''
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
