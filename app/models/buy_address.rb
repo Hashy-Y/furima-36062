@@ -1,6 +1,6 @@
 class BuyAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :delivery_area_id, :city, :address_line, :building_name, :phone_number, :item_id, :user_id
+  attr_accessor :postal_code, :delivery_area_id, :city, :address_line, :building_name, :phone_number, :item_id, :user_id, :token
  
   with_options presence: true do
     validates :delivery_area_id, numericality: { other_than: 0, message: "can't be blank" }
@@ -8,6 +8,7 @@ class BuyAddress
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :address_line
     validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
+    validates :token, presence: true
   end
   
  
