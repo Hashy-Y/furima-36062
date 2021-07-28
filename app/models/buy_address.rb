@@ -16,8 +16,11 @@ class BuyAddress
     buy_record = BuyRecord.create(item_id: item_id, user_id: user_id)
     delivery_address = DeliveryAddress.create(
     postal_code: postal_code,
+    delivery_area_id: delivery_area_id,
+    city: city,
     address_line: address_line,
     building_name: building_name,
-    phone_number: phone_number)
+    phone_number: phone_number,
+    buy_record_id: buy_record.id)
   end
 end
