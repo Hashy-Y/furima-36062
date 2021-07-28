@@ -4,6 +4,9 @@ class BuyRecordsController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new
+    if @item.buy_record.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def new
