@@ -81,13 +81,13 @@ RSpec.describe BuyAddress, type: :model do
       end
 
       it 'user_idが空だと保存できないこと' do
-        @buy_address.user_id = ''
+        @buy_address.user_id = nil
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("User can't be blank")
       end
 
       it 'item_idが空だと保存できないこと' do
-        @buy_address.item_id = ''
+        @buy_address.item_id = nil
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Item can't be blank")
       end
