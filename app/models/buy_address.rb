@@ -3,7 +3,7 @@ class BuyAddress
   attr_accessor :postal_code, :delivery_area_id, :city, :address_line, :building_name, :phone_number, :item_id, :user_id, :token
  
   with_options presence: true do
-    validates :delivery_area_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :delivery_area_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :address_line
